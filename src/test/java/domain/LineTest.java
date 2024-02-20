@@ -1,5 +1,6 @@
 package domain;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -15,8 +16,8 @@ public class LineTest {
     void testCreateLineWithContinuousValue() {
         List<Boolean> points = List.of(true, true, false);
         assertThatThrownBy(() -> new Line(points))
-                .isInstanceOf()
-                .hasMessage("");
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("[ERROR] 가로 선은 연속으로 연결될 수 없습니다");
     }
 
     @DisplayName("가로 줄이 연속되는 경우가 없으면 줄을 생성할 수 있다")
@@ -30,7 +31,7 @@ public class LineTest {
     void testCheckConnection() {
         List<Boolean> points = List.of(true, false, true);
         Line line = new Line(points);
-        assertThat(line.hasConnection(0)).isTrue();
+        assertThat(line.hasRightConnection(0)).isTrue();
     }
 
     @DisplayName("특정 좌표에 가로 줄이 없는 지 확인할 수 있다")
@@ -38,6 +39,6 @@ public class LineTest {
     void testCheckNoConnection() {
         List<Boolean> points = List.of(true, false, true);
         Line line = new Line(points);
-        assertThat(line.hasConnection(1)).isFalse();
+        assertThat(line.hasRightConnection(1)).isFalse();
     }
 }
