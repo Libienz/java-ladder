@@ -3,17 +3,17 @@ package domain;
 import java.util.List;
 
 public class Line {
-    private final List<Boolean> points;
+    private final List<ConnectStatus> points;
 
-    public Line(List<Boolean> points) {
+    public Line(List<ConnectStatus> points) {
         validateNoContinuousValue(points);
         this.points = points;
     }
 
-    private void validateNoContinuousValue(List<Boolean> points) {
-        Boolean prev = false;
-        for (Boolean connection : points) {
-            if (connection && prev) {
+    private void validateNoContinuousValue(List<ConnectStatus> points) {
+        ConnectStatus prev = ConnectStatus.UNCONNECTED;
+        for (ConnectStatus connection : points) {
+            if (connection.equals(ConnectStatus.CONNECTED) && connection.equals(prev)) {
                 throw new IllegalArgumentException("[ERROR] 가로 선은 연속으로 연결될 수 없습니다");
             }
             prev = connection;
@@ -21,6 +21,7 @@ public class Line {
     }
 
     public boolean hasRightConnection(Integer point) {
-        return points.get(point);
+
+        return points.get(point).getStatus();
     }
 }
