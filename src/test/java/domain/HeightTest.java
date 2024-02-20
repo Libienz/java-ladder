@@ -15,13 +15,13 @@ public class HeightTest {
     @DisplayName("높이는 0 이하면 검증에 실패한다.")
     void createHeightFailTest(int height) {
         assertThatThrownBy(() -> new Height(height))
-                .isInstanceOf(IllegalArgumentException.class).hasMessage("");
+                .isInstanceOf(IllegalArgumentException.class).hasMessage("[ERROR] 높이는 1 이상의 정수여야 합니다.");
     }
 
     @ParameterizedTest
     @ValueSource(ints = {1, 3, 5})
     @DisplayName("높이가 1 이상이면 검증에 성공한다.")
     void createHeightSuccessTest(int height) {
-        assertThatCode(() -> Height(height)).doesNotThrowAnyException();
+        assertThatCode(() -> new Height(height)).doesNotThrowAnyException();
     }
 }
