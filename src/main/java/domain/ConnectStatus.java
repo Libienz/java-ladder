@@ -16,4 +16,8 @@ public enum ConnectStatus {
         int idx = (int) (Math.floor(Math.random() * (max - min)) + min);
         return values()[idx];
     }
+
+    public Boolean getStatus() {
+        return status;
+    }
 }
