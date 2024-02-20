@@ -1,6 +1,7 @@
 package domain;
 
 public class Height {
+    private static final Integer MIN_HEIGHT = 1;
     private final Integer height;
 
     public Height(int height) {
@@ -9,7 +10,7 @@ public class Height {
     }
 
     private void validateRange(int height) {
-        if (height <= 0) {
+        if (height < MIN_HEIGHT) {
             throw new IllegalArgumentException("[ERROR] 높이는 1 이상의 정수여야 합니다.");
         }
     }
