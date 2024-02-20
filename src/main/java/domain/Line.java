@@ -21,7 +21,10 @@ public class Line {
     }
 
     public boolean hasRightConnection(Integer point) {
-
         return points.get(point).getStatus();
+    }
+
+    public Integer getPointCount() {
+        return points.size();
     }
 }
