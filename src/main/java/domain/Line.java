@@ -21,9 +21,6 @@ public class Line {
     }
 
     public boolean hasRightConnection(Integer point) {
-        if (points.get(point)) {
-            return true;
-        }
-        return false;
+        return points.get(point);
     }
 }
