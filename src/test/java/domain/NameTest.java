@@ -1,0 +1,30 @@
+package domain;
+
+import static org.assertj.core.api.Assertions.*;
+
+import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
+@DisplayName("사람 이름 테스트")
+public class NameTest {
+
+    @DisplayName("사람 이름이 1자 이상 5자 이하이면 생성 검증에 통과한다.")
+    @ParameterizedTest
+    @ValueSource(strings = {"1", "12", "123", "1234", "12345"})
+    void testCreateNameWithValidLength(String name) {
+        assertThatCode(() -> new Name(name)).doesNotThrowAnyException();
+    }
+
+    @DisplayName("사람 이름이 1자 이상 5자 이하의 범위를 벗어나면 생성 검증에 실패한다.")
+    @ParameterizedTest
+    @ValueSource(strings = {"", "123456"})
+    void testCreateNameWithInvalideLength(String name) {
+        assertThatThrownBy(() -> new Name())
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("");
+    }
+
+
+}
