@@ -14,4 +14,8 @@ public class Height {
             throw new IllegalArgumentException("[ERROR] 높이는 1 이상의 정수여야 합니다.");
         }
     }
+
+    public Integer getHeight() {
+        return height;
+    }
 }

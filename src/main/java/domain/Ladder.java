@@ -14,4 +14,8 @@ public class Ladder {
     public Line getLine(int idx) {
         return lines.get(idx);
     }
+
+    public Integer getHeight() {
+        return height.getHeight();
+    }
 }
