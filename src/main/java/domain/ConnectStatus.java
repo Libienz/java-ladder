@@ -10,7 +10,7 @@ public enum ConnectStatus {
         this.status = status;
     }
 
-    private ConnectStatus randomStatus() {
+    public static ConnectStatus randomStatus() {
         int min = 0;
         int max = values().length;
         int idx = (int) (Math.floor(Math.random() * (max - min)) + min);
