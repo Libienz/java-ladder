@@ -12,4 +12,8 @@ public class Names {
     public Integer getSize() {
         return names.size();
     }
+
+    public List<Name> getNames() {
+        return List.copyOf(names);
+    }
 }
